@@ -11,7 +11,8 @@
 %  - openEMS v0.0.23
 %
 % (C) 2010,2011 Thorsten Liebig <thorsten.liebig@uni-due.de>
-addpath('C:/Users/H364387/Downloads/openEMS/matlab');
+% Add openEMS path using environment variable OPENEMS_HOME
+run(fullfile(fileparts(mfilename(''fullpath'')), '..', 'setup_openems.m'));
 
 close all
 clear

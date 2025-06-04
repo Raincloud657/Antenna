@@ -53,7 +53,7 @@ xmlOutput = "";
 %  Generate start of file
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-xmlOutput = [xmlOutput 'addpath(''C:/Users/H364387/Downloads/openEMS/matlab'');' "\n"];
+xmlOutput = [xmlOutput 'run(fullfile(fileparts(mfilename(''fullpath'')), ''..'', ''setup_openems.m''));' "\n"];
 xmlOutput = [xmlOutput 'close all' "\n"];
 xmlOutput = [xmlOutput 'clear' "\n"];
 xmlOutput = [xmlOutput 'clc' "\n"];
