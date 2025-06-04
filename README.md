@@ -6,3 +6,14 @@ Hopefully I will create compact example with real results and maybe there would 
 
 Wilkinson divider, created in FreeCAD, simulated in OpenEMS, Octave script edited manually. Test run:
 ![](_img/eFieldWilkinsonDivider.gif)
+
+## Evolutionary Simulation
+The `evolution` directory contains a small example showing how OpenEMS can be
+used from Python to iteratively optimise a rectangular patch antenna. The script
+`antenna_evolution.py` calls Octave to run the template `patch_template.m`. The
+antenna parameters are mutated until the average directivity improves by 100%.
+Run the example with:
+```bash
+python3 evolution/antenna_evolution.py
+```
+Octave and OpenEMS need to be installed for the simulation to run.
