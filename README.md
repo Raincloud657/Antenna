@@ -6,3 +6,7 @@ Hopefully I will create compact example with real results and maybe there would 
 
 Wilkinson divider, created in FreeCAD, simulated in OpenEMS, Octave script edited manually. Test run:
 ![](_img/eFieldWilkinsonDivider.gif)
+
+## Evolving Patch Antenna
+
+Run `python evolve_patch.py` to start a simple evolutionary simulation that doubles the antenna score.
