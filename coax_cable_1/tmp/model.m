@@ -1,4 +1,5 @@
-addpath('C:/Users/H364387/Downloads/openEMS/matlab');
+% Add openEMS path using environment variable OPENEMS_HOME
+run(fullfile(fileparts(mfilename(''fullpath'')), '..', '..', 'setup_openems.m'));
 close all
 clear
 clc
