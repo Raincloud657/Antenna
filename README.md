@@ -10,8 +10,11 @@ Wilkinson divider, created in FreeCAD, simulated in OpenEMS, Octave script edite
 ### Evolutionary Example
 
 An experimental Python script `evolve_antenna.py` can evolve patch parameters and
-stores simulation results with caching. Run it from the repository root to
-generate random variants and show a leaderboard:
+stores simulation results with caching. If `octave` and openEMS are available the
+script will launch real simulations and export a `geometry.vtu` file for each run.
+Point the script to your openEMS Matlab helpers via the `OPENEMS_MATLAB` environment
+variable. Run it from the repository root to generate random variants and show a
+leaderboard:
 
 ```bash
 python3 evolve_antenna.py
