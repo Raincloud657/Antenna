@@ -6,3 +6,7 @@ Hopefully I will create compact example with real results and maybe there would 
 
 Wilkinson divider, created in FreeCAD, simulated in OpenEMS, Octave script edited manually. Test run:
 ![](_img/eFieldWilkinsonDivider.gif)
+
+## Evolutionary Patch Antenna Optimization
+
+The `evolution/evolve_patch.py` script demonstrates a simple evolutionary approach to tune a rectangular patch antenna for a 2.4 GHz resonance. Running the script creates a series of JSON files in `evolution/Fitness` for each generation and stores the best design found in `evolution/Fitness/Most_fit/best.json`.
