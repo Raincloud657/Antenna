@@ -13,8 +13,9 @@ An experimental Python script `evolve_antenna.py` can evolve patch parameters an
 stores simulation results with caching. If `octave` and openEMS are available the
 script will launch real simulations and export a `geometry.vtu` file for each run.
 Point the script to your openEMS Matlab helpers via the `OPENEMS_MATLAB` environment
-variable. Run it from the repository root to generate random variants and show a
-leaderboard:
+variable. For each variant the openEMS run stores S11 data to `s11.csv` and a summary
+to `cache/<hash>.json`. Run the script from the repository root to generate random
+variants and show a leaderboard:
 
 ```bash
 python3 evolve_antenna.py

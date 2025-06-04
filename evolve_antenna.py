@@ -4,6 +4,7 @@ import json
 import random
 import hashlib
 import shutil
+import subprocess
 from pathlib import Path
 
 try:
@@ -138,6 +139,11 @@ I = ReadUI('port_it1',Sim_Path,freq);
 uf_inc = 0.5*(U.FD{1}.val + I.FD{1}.val * feed.R);
 uf_ref = U.FD{1}.val - uf_inc;
 s11 = uf_ref ./ uf_inc;
+fid=fopen([Sim_Path '/s11.csv'],'w');
+for n=1:length(freq)
+    fprintf(fid,'%g,%g\n',freq(n),20*log10(abs(s11(n))));
+end
+fclose(fid);
 [~, idx] = min(abs(freq - 2.4e9));
 fid=fopen([Sim_Path '/result.json'],'w');
 fprintf(fid,'{"s11_db": %.6f}\n',20*log10(abs(s11(idx))));
@@ -153,6 +159,19 @@ exit;
     if res_file.exists():
         geom_file = sim_dir / "geometry.vtu"
         data = json.loads(res_file.read_text())
+        csv_file = sim_dir / "s11.csv"
+        if csv_file.exists():
+            freqs = []
+            vals = []
+            with csv_file.open() as f:
+                for line in f:
+                    if "," not in line:
+                        continue
+                    a, b = line.strip().split(",", 1)
+                    freqs.append(float(a))
+                    vals.append(float(b))
+            data["freq"] = freqs
+            data["s11_curve_db"] = vals
         data["geom"] = str(geom_file)
         return data
     return None
