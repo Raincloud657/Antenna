@@ -4,5 +4,13 @@ Because I know how to design antennas (or at least I thinks so) I know that for 
 For now this repository contains just some experimental files which were created on the way how I learned how to simulate basic patch antenna shapes and how to create design in FreeCAD and import it into openEMS.
 Hopefully I will create compact example with real results and maybe there would be simple way to create some macro for FreeCAD to generate openEMS simulation file from GUI.
 
+## openEMS Path Configuration
+
+Each example script requires access to the openEMS MATLAB/Octave interface.
+To avoid hard coded paths, the function `setup_openems.m` adds this
+directory to the MATLAB/Octave path based on the `OPENEMS_HOME`
+environment variable. Set this variable to your openEMS installation
+directory before running any of the provided scripts.
+
 Wilkinson divider, created in FreeCAD, simulated in OpenEMS, Octave script edited manually. Test run:
 ![](_img/eFieldWilkinsonDivider.gif)
