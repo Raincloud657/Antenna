@@ -6,3 +6,13 @@ Hopefully I will create compact example with real results and maybe there would 
 
 Wilkinson divider, created in FreeCAD, simulated in OpenEMS, Octave script edited manually. Test run:
 ![](_img/eFieldWilkinsonDivider.gif)
+
+### Evolutionary Example
+
+An experimental Python script `evolve_antenna.py` can evolve patch parameters and
+stores simulation results with caching. Run it from the repository root to
+generate random variants and show a leaderboard:
+
+```bash
+python3 evolve_antenna.py
+```
