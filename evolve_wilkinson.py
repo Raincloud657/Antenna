@@ -63,10 +63,17 @@ def crossover(a: Candidate, b: Candidate) -> Candidate:
 
 
 def evolve(population: List[Candidate], generations: int = 50, elite: int = 5) -> Candidate:
-    for _ in range(generations):
+    """Evolve population and print progress information."""
+    best_so_far = 0.0
+    for gen in range(1, generations + 1):
         for cand in population:
             cand.fitness = evaluate(cand)
         population.sort(key=lambda c: c.fitness, reverse=True)
+        if population[0].fitness > best_so_far * 1.1:
+            best_so_far = population[0].fitness
+            print(f"[gen {gen}] Fitness increase 10% -> {best_so_far:.3f}")
+        if gen % 100 == 0:
+            print(f"[gen {gen}] Current best fitness {population[0].fitness:.3f}")
         next_gen = population[:elite]
         while len(next_gen) < len(population):
             parents = random.sample(population[:10], 2)
