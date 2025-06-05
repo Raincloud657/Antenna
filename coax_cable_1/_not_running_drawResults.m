@@ -8,7 +8,7 @@ f0 = 0e9;
 fc = 4e9;
 
 %CSXGeomPlot([Sim_Path '/' Sim_CSX]);
-%RunOpenEMS(Sim_Path, Sim_CSX);
+RunOpenEMS(Sim_Path, Sim_CSX);
 
 %%
 %freq = linspace(0,2*f0,201);

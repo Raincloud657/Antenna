@@ -10,7 +10,7 @@ clear
 clc
 
 %% switches & options...
-postprocessing_only = 1;
+postprocessing_only = 0;
 draw_3d_pattern = 0; % this may take a while...
 use_pml = 0;         % use pml boundaries instead of mur
 

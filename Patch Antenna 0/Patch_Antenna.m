@@ -18,7 +18,7 @@ clear
 clc
 
 %% switches & options...
-postprocessing_only = 1;
+postprocessing_only = 0;
 draw_3d_pattern = 0; % this may take a while...
 use_pml = 0;         % use pml boundaries instead of mur
 openEMS_opts = '';
@@ -126,7 +126,7 @@ if (postprocessing_only==0)
     CSXGeomPlot( [Sim_Path '/' Sim_CSX] );
 
     %% run openEMS
-    %RunOpenEMS( Sim_Path, Sim_CSX, openEMS_opts );
+    RunOpenEMS( Sim_Path, Sim_CSX, openEMS_opts );
 end
 
 %% postprocessing & do the plots
