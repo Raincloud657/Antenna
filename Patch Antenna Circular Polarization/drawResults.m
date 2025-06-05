@@ -2,7 +2,7 @@
 
 
 % include the line above to launch csxcad omitt it to avoid launching CSXCad
-%RunOpenEMS( Sim_Path, Sim_CSX );
+RunOpenEMS( Sim_Path, Sim_CSX );
 
 
 %% post-processing

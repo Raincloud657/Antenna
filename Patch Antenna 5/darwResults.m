@@ -6,7 +6,7 @@ fc = 6e9;
 CSXGeomPlot( [Sim_Path '/' Sim_CSX] );
 
 %% run openEMS
-%RunOpenEMS( Sim_Path, Sim_CSX, openEMS_opts );
+RunOpenEMS( Sim_Path, Sim_CSX, openEMS_opts );
 
 %% postprocessing & do the plots
 freq = linspace( max([1e9,f0-fc]), f0+fc, 501 );
