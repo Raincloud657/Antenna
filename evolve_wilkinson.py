@@ -10,6 +10,7 @@ class Candidate:
     trace_width: float
     topology: str
     fitness: float = field(default=0.0)
+    metrics: dict = field(default_factory=dict)
 
 
 def simulate(candidate: Candidate) -> dict:
@@ -27,6 +28,7 @@ def simulate(candidate: Candidate) -> dict:
 
 def evaluate(candidate: Candidate) -> float:
     results = simulate(candidate)
+    candidate.metrics = results
     # Weighted fitness evaluation
     fitness = 0.0
     # Lower insertion loss is better
@@ -42,6 +44,17 @@ def evaluate(candidate: Candidate) -> float:
     fitness += results["reconfigurable"] * 3.0
     # Penalize unrealistic physical size (placeholder)
     return fitness
+
+
+def meets_goals(candidate: Candidate) -> bool:
+    m = candidate.metrics
+    return (
+        m.get("insertion_loss", 1.0) <= 0.1 and
+        m.get("isolation", 0.0) >= 40.0 and
+        m.get("vswr", 2.0) <= 1.05 and
+        5e8 <= m.get("bandwidth", 0.0) <= 10e9 and
+        m.get("reconfigurable", 0.0) >= 1.0
+    )
 
 
 def mutate(candidate: Candidate) -> Candidate:
@@ -80,6 +93,10 @@ def evolve(population: List[Candidate], generations: int = 50, elite: int = 5) -
 
         if gen % 100 == 0:
             print(f"[gen {gen}] Current best fitness {population[0].fitness:.3f}")
+
+        if meets_goals(population[0]):
+            print(f"[gen {gen}] Goals satisfied!")
+            return population[0]
 
         next_gen = population[:elite]
         while len(next_gen) < len(population):
