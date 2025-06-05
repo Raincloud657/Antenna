@@ -69,11 +69,18 @@ def evolve(population: List[Candidate], generations: int = 50, elite: int = 5) -
         for cand in population:
             cand.fitness = evaluate(cand)
         population.sort(key=lambda c: c.fitness, reverse=True)
+
+        # Print a message each generation so the user sees progress
+        print(f"[gen {gen}] best {population[0].fitness:.3f}")
+
+        # Highlight significant fitness improvements
         if population[0].fitness > best_so_far * 1.1:
             best_so_far = population[0].fitness
             print(f"[gen {gen}] Fitness increase 10% -> {best_so_far:.3f}")
+
         if gen % 100 == 0:
             print(f"[gen {gen}] Current best fitness {population[0].fitness:.3f}")
+
         next_gen = population[:elite]
         while len(next_gen) < len(population):
             parents = random.sample(population[:10], 2)
@@ -82,6 +89,8 @@ def evolve(population: List[Candidate], generations: int = 50, elite: int = 5) -
                 child = mutate(child)
             next_gen.append(child)
         population = next_gen
+
+    print("Evolution finished")
     return population[0]
 
 
